@@ -1,11 +1,3 @@
-/*
- * @Description: Hello World
- * @Version: 1.0
- * @Author: WangBo
- * @Date: 2026-01-29 13:36:15
- * @LastEditors: WangBo
- * @LastEditTime: 2026-01-29 13:53:08
- */
 import { offset } from '@floating-ui/dom'
 import { ShortcutKey, WordPracticeMode, WordPracticeStage } from '@/types/enum'
 
