@@ -1,10 +1,19 @@
+/*
+ * @Description: Hello World
+ * @Version: 1.0
+ * @Author: WangBo
+ * @Date: 2026-01-29 13:36:15
+ * @LastEditors: WangBo
+ * @LastEditTime: 2026-01-29 13:53:08
+ */
 import { offset } from '@floating-ui/dom'
 import { ShortcutKey, WordPracticeMode, WordPracticeStage } from '@/types/enum'
 
 export const GITHUB = 'https://github.com/zyronon/TypeWords'
-export const Host = 'typewords.cc'
+export const Host = 'localhost'
 export const EMAIL = 'zyronon@163.com'
-export const Origin = `https://${Host}`
+// export const Origin = `https://${Host}`
+export const Origin = ``
 export const APP_NAME = 'Type Words'
 
 const common = {
