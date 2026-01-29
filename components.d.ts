@@ -181,7 +181,6 @@ declare module 'vue' {
     Statistics: typeof import('./src/components/word/Statistics.vue')['default']
     Switch: typeof import('./src/components/base/Switch.vue')['default']
     Textarea: typeof import('./src/components/base/Textarea.vue')['default']
-    Toast: typeof import('./src/components/base/toast/Toast.vue')['default']
     ToastComponent: typeof import('./src/components/base/toast/ToastComponent.vue')['default']
     Tooltip: typeof import('./src/components/base/Tooltip.vue')['default']
     TypeWord: typeof import('./src/components/word/TypeWord.vue')['default']

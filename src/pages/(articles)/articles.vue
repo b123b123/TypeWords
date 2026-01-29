@@ -14,16 +14,7 @@ import { useRuntimeStore } from '@/stores/runtime.ts'
 import { useSettingStore } from '@/stores/setting.ts'
 import { getDefaultDict } from '@/types/func.ts'
 import type { DictResource } from '@/types/types.ts'
-import {
-  _getDictDataByUrl,
-  _nextTick,
-  isMobile,
-  loadJsLib,
-  msToHourMinute,
-  resourceWrap,
-  total,
-  useNav,
-} from '@/utils'
+import { _getDictDataByUrl, _nextTick, isMobile, loadJsLib, msToHourMinute, resourceWrap, total, useNav } from '@/utils'
 import { getPracticeArticleCache } from '@/utils/cache.ts'
 import { useFetch } from '@vueuse/core'
 import dayjs from 'dayjs'
@@ -61,10 +52,7 @@ async function init() {
   }
   if (store.article.studyIndex >= 1) {
     if (!store.sbook.custom && !store.sbook.articles.length) {
-      store.article.bookList[store.article.studyIndex] = await _getDictDataByUrl(
-        store.sbook,
-        DictType.article
-      )
+      store.article.bookList[store.article.studyIndex] = await _getDictDataByUrl(store.sbook, DictType.article)
     }
   }
   let d = getPracticeArticleCache()
@@ -163,7 +151,7 @@ function toggleSelect(item) {
 
 async function goBookDetail(val: DictResource) {
   runtimeStore.editDict = getDefaultDict(val)
-  nav('book-detail',{id: val.id})
+  nav('book-detail', { id: val.id })
 }
 
 const totalSpend = $computed(() => {
@@ -215,21 +203,13 @@ const weekList = $computed(() => {
   return list
 })
 
-const { data: recommendBookList, isFetching } = useFetch(
-  resourceWrap(DICT_LIST.ARTICLE.RECOMMENDED)
-).json()
+const { data: recommendBookList, isFetching } = useFetch(resourceWrap(DICT_LIST.ARTICLE.RECOMMENDED)).json()
 
 let isNewHost = $ref(window.location.host === Host)
 </script>
 
 <template>
   <BasePage>
-    <div class="mb-4" v-if="!isNewHost">
-      新域名已启用，后续请访问
-      <a href="https://typewords.cc/words?from_old_site=1">https://typewords.cc</a>。当前 2study.top
-      域名将在不久后停止使用
-    </div>
-
     <div class="card flex flex-col md:flex-row justify-between gap-space p-4 md:p-6">
       <div class="">
         <Book
@@ -290,12 +270,7 @@ let isNewHost = $ref(window.location.host === Host)
             :show-text="true"
           ></Progress>
 
-          <BaseButton
-            size="large"
-            class="w-full md:w-auto"
-            @click="startStudy"
-            :disabled="!base.sbook.name"
-          >
+          <BaseButton size="large" class="w-full md:w-auto" @click="startStudy" :disabled="!base.sbook.name">
             <div class="flex items-center gap-2 justify-center w-full">
               <span class="line-height-[2]">{{ isSaveData ? '继续学习' : '开始学习' }}</span>
               <IconFluentArrowCircleRight16Regular class="text-xl" />
@@ -309,11 +284,7 @@ let isNewHost = $ref(window.location.host === Host)
       <div class="flex justify-between">
         <div class="title">我的书籍</div>
         <div class="flex gap-4 items-center">
-          <PopConfirm
-            title="确认删除所有选中书籍？"
-            @confirm="handleBatchDel"
-            v-if="selectIds.length"
-          >
+          <PopConfirm title="确认删除所有选中书籍？" @confirm="handleBatchDel" v-if="selectIds.length">
             <BaseIcon class="del" title="删除">
               <DeleteIcon />
             </BaseIcon>
@@ -323,17 +294,15 @@ let isNewHost = $ref(window.location.host === Host)
             class="color-link cursor-pointer"
             v-if="base.article.bookList.length > 1"
             @click="
-             () => {
-              isMultiple = !isMultiple
-              selectIds = []
-             }
+              () => {
+                isMultiple = !isMultiple
+                selectIds = []
+              }
             "
           >
             {{ isMultiple ? '取消' : '管理书籍' }}
           </div>
-          <div class="color-link cursor-pointer" @click="nav('book-detail', { isAdd: true })">
-            创建个人书籍
-          </div>
+          <div class="color-link cursor-pointer" @click="nav('book-detail', { isAdd: true })">创建个人书籍</div>
         </div>
       </div>
       <div class="flex gap-4 flex-wrap mt-4">

@@ -276,12 +276,6 @@ const systemPracticeText = $computed(() => {
 
 <template>
   <BasePage>
-    <div class="mb-4" v-if="!isNewHost">
-      新域名已启用，后续请访问
-      <a class="mr-4" :href="`${Origin}/words?from_old_site=1`">{{ Origin }}</a
-      >当前 2study.top 域名将在不久后停止使用
-    </div>
-
     <div class="card flex flex-col md:flex-row gap-4">
       <div class="flex-1 w-full flex flex-col justify-between">
         <div class="flex gap-3">
@@ -355,7 +349,7 @@ const systemPracticeText = $computed(() => {
               {{ isSaveData ? '上次任务' : '今日任务' }}
             </div>
             <span class="color-link cursor-pointer" v-if="store.sdict.id" @click="showPracticeWordListDialog = true"
-            >词表</span
+              >词表</span
             >
           </div>
           <div class="flex gap-1 items-center" v-if="store.sdict.id">
